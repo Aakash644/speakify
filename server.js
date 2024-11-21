@@ -20,7 +20,7 @@ const fs = require('fs');
 app.use(express.json());
 app.use(cors());
 
-app.use(cors({ origin: 'https://speakify-a-voice-and-text-translation-application.vercel.app' }));
+app.use(cors({ origin: 'https://speakify-ecru.vercel.app/' }));
 app.use(bodyParser.json());
 
 
