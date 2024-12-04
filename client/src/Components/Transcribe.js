@@ -84,15 +84,23 @@ const Transcribe = () => {
         },
       });
 
-      if (Array.isArray(response.data.transcription)) {
-        const match = response.data.transcription[0].match(/text=["'](.*?)["']/);
-        setTranscription(match ? match[1] : 'Transcription unavailable');
-        setProgress(100);
-      } else {
-        setTranscription('Transcription unavailable');
-      }
+      
+    let transcriptionText = 'Transcription unavailable';
 
-      setError('');
+    if (Array.isArray(response.data.transcription)) {
+      const match = response.data.transcription[0].match(/text=["'](.*?)["']/);
+      transcriptionText = match ? match[1] : transcriptionText;
+    }
+
+    // Return the object with the transcription text and chunks set to null
+    const transcriptionOutput = {
+      text: transcriptionText,
+      chunks: null, // You can adjust this if needed
+    };
+
+    setTranscription(transcriptionOutput);  // Set the transcription output in your state
+    setProgress(100);
+    setError('');
     } catch (err) {
       setError('Error processing the audio file.');
       console.error(err);
