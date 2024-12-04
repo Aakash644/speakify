@@ -98,7 +98,7 @@ const Transcribe = () => {
       chunks: null, // You can adjust this if needed
     };
 
-    setTranscription(transcriptionOutput);  // Set the transcription output in your state
+    setTranscription(transcriptionOutput.text);  // Set the transcription output in your state
     setProgress(100);
     setError('');
     } catch (err) {
